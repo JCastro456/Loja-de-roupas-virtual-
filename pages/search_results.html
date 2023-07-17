@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+    <title>Search Results</title>
+</head>
+<body>
+    <h1>Resultado da Pesquisa</h1>
+    <ul id="resultList"></ul>
+
+    <script>
+        // Recuperar os resultados da pesquisa da localStorage
+        const searchResults = JSON.parse(localStorage.getItem("searchResults"));
+
+        // Exibir os resultados na lista
+        const resultList = document.getElementById("resultList");
+        searchResults.forEach(product => {
+            const listItem = document.createElement("div");
+            listItem.className = "product-card"
+            listItem.innerHTML =  `
+            <div class="card" style="width: 17rem;">
+                <img src="${product.imagem}" class="card-img-top" alt="Imagem ' ${product.cod}">'
+                <div class="card-body"> 
+                    <h5 class="card-title">${product.produto}</h5>  
+                    <p class="card-text">${product.preço}</p>' 
+                  <input id="buttonAdicionar" class="btn btn-primary" type="button" value="Adicionar" onclick="adicionarAoCarrinho()" > 
+                </div>
+            </div>      
+                    `;
+            resultList.appendChild(listItem);
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
